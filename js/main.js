@@ -63,7 +63,7 @@ const changeBackgroundColorToBlack = (e) => {
     })    
 }
 
-// changeBackgroundColorToBlack(); // * Activates the functionality for the grid's square color change, otherwise, the event listener wont work since the squares are being created dynamically
+changeBackgroundColorToBlack(); // * Activates the functionality for the grid's square color change, otherwise, the event listener wont work since the squares are being created dynamically
 
 
 
