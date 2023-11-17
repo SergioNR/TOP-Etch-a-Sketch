@@ -1,17 +1,15 @@
 // Global Variable declaration
 let gridXAxisSize = 0;
 let gridYAxisSize = 0;
-// Grid creation
 
+// Grid creation
 const createGridButton = document.querySelector('.createGridButton');
 
 createGridButton.addEventListener('click', () => getGridSize());
 
 const getGridSize = () => {
     gridXAxisSize = parseInt(prompt('Enter the number of squares per side for the new grid (max 100)'));
-    console.log(typeof gridXAxisSize)
     gridYAxisSize = parseInt(prompt('Enter the number of squares per side for the new grid (max 100)'));
-    console.log(typeof gridYAxisSize)
 
     if (isNaN(gridXAxisSize) === true || isNaN(gridYAxisSize) === true) {
         alert(`please dont be an idiot and enter a number`);
@@ -25,7 +23,6 @@ const getGridSize = () => {
         }
         else {
             createGrid(gridXAxisSize, gridYAxisSize);
-            changeBackColorToBlack();
         }
     }
 }
@@ -42,6 +39,7 @@ const createGrid = (gridXAxisSize, gridYAxisSize) => {
     }
 }
 
+createGrid(16, 16); // Initial grid creation //! DEBUG, REMOVE BEFORE DEPLOYMENT TO PRODUCTION
 // Grid reset
 const resetGridButton = document.querySelector('.resetGridButton');
 resetGridButton.addEventListener('click', () => resetGrid());
@@ -56,7 +54,7 @@ const resetGrid = () => {
 
 // Grid's Square color change
 
-const changeBackColorToBlack = (e) =>{
+const changeBackgroundColorToBlack = (e) => {
     const square = document.querySelectorAll('.square');
     square.forEach((square) => {
         square.addEventListener('mouseover', (e) => {
@@ -65,6 +63,7 @@ const changeBackColorToBlack = (e) =>{
     })    
 }
 
+// changeBackgroundColorToBlack(); // * Activates the functionality for the grid's square color change, otherwise, the event listener wont work since the squares are being created dynamically
 
 
-// Add a button to the top of the screen that will send the user a popup asking for the number of squares per side for the new grid. Once entered, the existing grid should be removed and a new grid should be generated in the same total space as before (e.g. 960px wide) so that you’ve got a new sketch pad. Tip: Set the limit for the user input to a maximum of 100. A larger number of squares results in more computer resources being used, potentially causing delays, freezing, or crashing that we want to prevent.
+
