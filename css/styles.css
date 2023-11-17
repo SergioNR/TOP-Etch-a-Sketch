@@ -6,12 +6,18 @@
 }
 
 .square-bg-black {
-    transition: background-color 2s ;
     background-color: #000;
+}
+
+.square {
+    transition: background-color 2s ;
 }
 
 .squaresContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 1px;
+    width: 960px;
+    height: 100%;
+    border: black solid 2px;
 }

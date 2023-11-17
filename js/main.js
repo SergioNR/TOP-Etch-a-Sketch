@@ -5,7 +5,11 @@ let gridYAxisSize = 0;
 // Grid creation
 const createGridButton = document.querySelector('.createGridButton');
 
-createGridButton.addEventListener('click', () => getGridSize());
+createGridButton.addEventListener('click', () => {
+    resetGrid()
+    getGridSize()
+});
+
 
 const getGridSize = () => {
     gridXAxisSize = parseInt(prompt('Enter the number of squares per side for the new grid (max 100)'));
@@ -53,17 +57,37 @@ const resetGrid = () => {
 }
 
 // Grid's Square color change
+const changeBackgroundColorToBlackButton = document.querySelector('.bgColorBlackButton');
 
 const changeBackgroundColorToBlack = (e) => {
     const square = document.querySelectorAll('.square');
     square.forEach((square) => {
         square.addEventListener('mouseover', (e) => {
+            e.target.classList.add('square');
             e.target.classList.add('square-bg-black');
+            e.target.style.backgroundColor = '';
         })
     })    
 }
 
-changeBackgroundColorToBlack(); // * Activates the functionality for the grid's square color change, otherwise, the event listener wont work since the squares are being created dynamically
+changeBackgroundColorToBlackButton.addEventListener('click', (e) => changeBackgroundColorToBlack(e));
 
+changeBackgroundColorToBlack(); // * Activates the functionality for the grid's square color change to black BY DEFAULT, otherwise, the event listener wont work since the squares are being created dynamically
 
+// Grid's Square color change to random color
+const changeBackgroundColorToRandomButton = document.querySelector('.bgRandomColorButton');
 
+const changeBackgroundColorToRandom = (e) => {
+    const square = document.querySelectorAll('.square');
+    square.forEach((square) => {
+        let bgColor = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`; // * Generates a random color for the background of the square
+        square.addEventListener('mouseover', (e) => {
+            e.target.classList.add('square');
+            e.target.style.backgroundColor = bgColor;
+            e.target.classList.remove('square-bg-black');
+
+        })
+    })
+}
+
+changeBackgroundColorToRandomButton.addEventListener('click', (e) => changeBackgroundColorToRandom(e));
